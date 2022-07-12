@@ -1,9 +1,6 @@
 # Segmentacion_de_clientes
 ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le puede dar a cada uno.
-
-
-# Procesando-batch-cheques
-Esta es una aplicación propuesta por la escuela de innovación del ITBA en el SPRINT 4 de su curso de desarrollador fullstack.
+Esta es una aplicación propuesta por la escuela de innovación del ITBA en el SPRINT 5 de su curso de desarrollador fullstack.
 
 ## Table of contents
 
@@ -27,18 +24,18 @@ Esta es una aplicación propuesta por la escuela de innovación del ITBA en el S
 - Live Site URL: (https://nicolaskorzusehec.github.io/Segmentacion_de_clientes/)
 
 ## Autores
-### Nicolas Korzusehec
+#### Nicolas Korzusehec
 - GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
 
-### x
+#### x
 - GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
 
-### x
+#### x
 - GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
 
-### x
+#### x
 - GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
