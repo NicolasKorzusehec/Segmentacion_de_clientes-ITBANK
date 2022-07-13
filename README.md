@@ -24,18 +24,22 @@ Esta es una aplicación propuesta por la escuela de innovación del ITBA en el S
 - Live Site URL: (https://nicolaskorzusehec.github.io/Segmentacion_de_clientes/)
 
 ## Autores
-#### Nicolas Korzusehec
+#### Korzusehec, Nicolás
 - GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
 
-#### x
-- GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
-- LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
+#### Upstein, Elias Román
+- GitHub - [@](https://github.com/EliasUpstein)
+- LinkedIn - [ ]()
 
-#### x
-- GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
-- LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
+#### Ledesma, Juan Ignacio
+- GitHub - [@](https://github.com/juanignacio97)
+- LinkedIn - [ ]()
 
-#### x
-- GitHub - [@NicolasKorzusehec](https://github.com/NicolasKorzusehec)
-- LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
+#### Molinas, Nicolás 
+- GitHub - [@](https://github.com/NicolasGabM)
+- LinkedIn - [ ]()
+
+#### Magliotto, Ena Sofía 
+- GitHub - [@](https://github.com/SofiaEna)
+- LinkedIn - [ ]()
