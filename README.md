@@ -19,7 +19,7 @@ Esta es una aplicación propuesta por la escuela de innovación del ITBA en el S
 ### Aclaraciones y acotaciones
 
 
-### Links
+## Links
 - Solution URL: (https://github.com/NicolasKorzusehec/Segmentacion_de_clientes)
 - Live Site URL: (https://nicolaskorzusehec.github.io/Segmentacion_de_clientes/)
 
