@@ -94,9 +94,9 @@ Errores y excepciones a tener presentes
 ### Referencias
 - [Sistema Legacy](https://www.stackscale.com/es/blog/sistemas-legacy/)
 - Uso de HTML en python:
-  https://www.geeksforgeeks.org/creating-and-viewing-html-fileswith-python/
-  https://pypi.org/project/simple-html/
-  https://streamlit-components-tutorial.netlify.app/helloworld/static-render/
+  - https://www.geeksforgeeks.org/creating-and-viewing-html-fileswith-python/
+  - https://pypi.org/project/simple-html/
+  - https://streamlit-components-tutorial.netlify.app/helloworld/static-render/
 
 ## Links del proyecto
 - Solution URL: (https://github.com/NicolasKorzusehec/Segmentacion_de_clientes)
