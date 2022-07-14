@@ -29,17 +29,17 @@ Esta es una aplicación propuesta por la escuela de innovación del ITBA en el S
 - LinkedIn - [Nicolás Korzusehec](https://www.linkedin.com/in/nicol%C3%A1s-korzusehec/)
 
 #### Upstein, Elias Román
-- GitHub - [@](https://github.com/EliasUpstein)
-- LinkedIn - [ ]()
+- GitHub - [@EliasUpstein](https://github.com/EliasUpstein)
+- LinkedIn - [/]()
 
 #### Ledesma, Juan Ignacio
-- GitHub - [@](https://github.com/juanignacio97)
-- LinkedIn - [ ]()
+- GitHub - [@juanignacio97](https://github.com/juanignacio97)
+- LinkedIn - [Juan Ignacio Ledesma](https://www.linkedin.com/in/juanignacioledesma/)
 
 #### Molinas, Nicolás 
-- GitHub - [@](https://github.com/NicolasGabM)
-- LinkedIn - [ ]()
+- GitHub - [@NicolasGabM](https://github.com/NicolasGabM)
+- LinkedIn - [Nicolas Gabriel Molinas](https://www.linkedin.com/in/nicolas-gabriel-molinas-20802a216/)
 
 #### Magliotto, Ena Sofía 
-- GitHub - [@](https://github.com/SofiaEna)
-- LinkedIn - [ ]()
+- GitHub - [@SofiaEna](https://github.com/SofiaEna)
+- LinkedIn - [/]()
