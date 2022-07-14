@@ -1,20 +1,26 @@
 # Segmentacion_de_clientes
 Esta es una aplicación propuesta por la escuela de innovación del ITBA en el SPRINT 5 de su curso de desarrollador fullstack.
-ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le puede dar a cada uno. Adicionalmente los clientes pueden tener distintos tipos de tarjetas de crédito y operaciones permitidas según su perfil asociado.
+
+El banco cuenta con un sistema TPS `Sistema de Procesamiento de Transacciones` que tiene como principal función enviar las transacciones ocurridas, diferenciando si fueron aceptadas o no, `sin indicar la razón`.
+Se busca automatizar el procesamiento de los datos emitidos por el TPS.
 
 ## Table of contents
-
-  - [Objetivo](#objetivo)
-    - [Detalles del desafio](#detalles-del-desafio)
-      - Tipos de Clientes
-      - Tipos de Cuentas
+  - [Problematica](#problematica)
+  - [Detalles del desafio](#detalles-del-desafio)
+    - Tipos de Clientes
+    - Tipos de Cuentas
+    - Transacciones habilitadas
   - [Requerimientos especificos](#requerimientos-especificos)
   - [Aclaraciones y acotaciones](#aclaraciones-y-acotaciones)
+    - [Referencias](#referencias)
   - [Links](#links)
   - [Autores](#autores)
 
-## Objetivo
-
+## Problematica
+El banco cuenta con un sistema TPS `Sistema de Procesamiento de Transacciones` que tiene como principal función enviar las transacciones ocurridas, diferenciando si fueron aceptadas o no, `sin indicar la razón`. 
+Dicho sistema tiene años de funcionamiento en el banco y fue depurado varias veces, llevando la tasa de errores al mínimo, por lo que se sabe que funciona correctamente. El equipo de TI, identifica este sistema como un `Legacy` o `Legado`. La única salida que provee el sistema, son los datos `crudos` del evento ocurrido con los montos asociados sin ningún procesamiento o información adicional.
+ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le puede dar a cada uno. Adicionalmente los clientes pueden tener distintos tipos de tarjetas de crédito y operaciones permitidas según su perfil asociado.
+El área de operaciones del banco está integrada por gente de mucha experiencia en el banco que utiliza planillas propias para poder procesar la salida de datos del TPS. Dado que actualmente ITBANK se encuentra en un proceso de renovación, se están incorporando nuevos empleados al área de referencia. Es por ese motivo que el gerente requiere una `automatización` del procesamiento de los datos emitidos por el TPS. La mejor forma de abordar este problema es generar una aplicación que reciba como input la información del TPS, la procese y emita un reporte que sea capaz de mostrar la razón de porque estas transacciones fueron rechazadas para ponerla a disposición del equipo de atención al cliente. Si son aceptadas simplemente se agrega al reporte la transacción que se hizo sin detalle particular, de esta forma quedara completo el informe.
 
 ## Detalles del desafio
 ### Tipos de clientes
@@ -51,14 +57,48 @@ ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le pue
   - Caja de ahorro en dólares
   - Cuenta Corriente
 
+### Transacciones habilitadas
+Las transacciones que informa el sistema legado son acotadas. Actualmente informa las siguientes transacciones:
+  - `RETIRO_EFECTIVO_CAJERO_AUTOMATICO`: Tener presente que si tiene cuenta corriente puede figurar el valor de saldo en cuenta como negativo hasta el importe del cupo establecido.
+  - `ALTA_TARJETA_CREDITO`: Se solicito una nueva tarjeta de crédito.
+  - `ALTA_CHEQUERA`: Se solicito una nueva chequera.
+  - `COMPRAR_DOLAR`: Se solicito realizar la transacción para comprar dólares, pero solo lo pueden hacer los clientes que tengan cuenta en dólares.
+  - `TRANSFERENCIA_ENVIADA`: Solo se puede en pesos y lo que tenga en caja de ahorro y cuenta corriente debe poder pagar la comisión que se cobra.
+  - `TRANSFERENCIA_RECIBIDA`: Sólo en pesos y tener presente que va a estar rechaza si no estuvo autorizada.
 
 ## Requerimientos especificos
+El equipo de arquitectura de TI del ITBANK estableció los siguientes `principios`:
+  - Se debe utilizar `programación orientada a objetos` para generar la nueva aplicación.
+  - Existe un diagrama de clases estándar en la compañía que sirve como guía, por lo que se pueden cambiar para cubrir las necesidades del proyecto.
+  - Para los cálculos que se realizan en funciones que se implementaron, se tiene que llamar al paquete o módulo y ejecutarlas.
+  - Se puede utilizar una librería para generar el HTML o implementar las clases para generarlo.
+  - Se debe validar que los archivos JSON estén correctamente formateados.
 
+El reporte emitido debe incluir:
+  - Nombre de cliente
+  - Número
+  - DNI
+  - Dirección 
+  - Fecha de cada transaccion
+  - Tipo de operacion y su estado
+  - Monto y razon poe la cual se rechazo, `vacío en caso de ser aceptada`
 
+Se pide que el reporte sea una `página en HTML` válida de forma que el browser estándar del banco lo pueda interpretar y visualizar.
+La salida del sistema TPS es un `archivo JSON` con las transacciones que debemos procesar.
+  
 ## Aclaraciones y acotaciones
+Errores y excepciones a tener presentes
+- Transacciones que dejen el monto en negativo
+- División por cero.
 
+### Referencias
+- [Sistema Legacy](https://www.stackscale.com/es/blog/sistemas-legacy/)
+- Uso de HTML en python:
+  https://www.geeksforgeeks.org/creating-and-viewing-html-fileswith-python/
+  https://pypi.org/project/simple-html/
+  https://streamlit-components-tutorial.netlify.app/helloworld/static-render/
 
-## Links
+## Links del proyecto
 - Solution URL: (https://github.com/NicolasKorzusehec/Segmentacion_de_clientes)
 - Live Site URL: (https://nicolaskorzusehec.github.io/Segmentacion_de_clientes/)
 
