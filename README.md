@@ -13,11 +13,11 @@ ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le pue
   - [Links](#links)
   - [Autores](#autores)
 
-### Objetivo
+## Objetivo
 
 
-### Detalles del desafio
-#### Tipos de clientes
+## Detalles del desafio
+### Tipos de clientes
 - `Classic`
   - Tiene solamente `una` tarjeta de débito que se crea junto con el cliente.
   - Solo tiene `una caja ahorro` en pesos creada cuando se dio de alta el cliente.
@@ -46,16 +46,16 @@ ITBANK tiene distintos tipos de clientes y distintos tipos de cuentas que le pue
   - No se aplican comisiones a las transferencias.
   - Pueden recibir transferencias por cualquier monto sin previa autorización.
 
-#### Tipos de cuentas
+### Tipos de cuentas
   - Caja de ahorro en pesos
   - Caja de ahorro en dólares
   - Cuenta Corriente
 
 
-### Requerimientos especificos
+## Requerimientos especificos
 
 
-### Aclaraciones y acotaciones
+## Aclaraciones y acotaciones
 
 
 ## Links
