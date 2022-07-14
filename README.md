@@ -118,7 +118,3 @@ Errores y excepciones a tener presentes
 #### Molinas, Nicolás 
 - GitHub - [@NicolasGabM](https://github.com/NicolasGabM)
 - LinkedIn - [Nicolas Gabriel Molinas](https://www.linkedin.com/in/nicolas-gabriel-molinas-20802a216/)
-
-#### Magliotto, Ena Sofía 
-- GitHub - [@SofiaEna](https://github.com/SofiaEna)
-- LinkedIn - [/]()
