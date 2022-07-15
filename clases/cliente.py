@@ -13,9 +13,9 @@ class Cliente:
         self.dni = datos_cliente["dni"]
         self.direccion = Direccion(datos_cliente["direccion"])
 
-    def puede_crear_chequera() -> bool:
+    def puede_crear_chequera(self) -> bool:
         pass
-    def puede_crear_tarjeta_credito() -> bool:
+    def puede_crear_tarjeta_credito(self) -> bool:
         pass
-    def puede_comprar_dolar() -> bool:
+    def puede_comprar_dolar(self) -> bool:
         pass

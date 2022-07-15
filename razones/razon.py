@@ -1,5 +1,5 @@
 class Razon():
     tipo =""
 
-    def resolver(cliente,evento) -> str:
-        pass
+    def resolver(self,cliente,evento) -> str:
+        return ""

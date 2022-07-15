@@ -12,5 +12,5 @@ class Direccion():
         self.provincia = direccion["provincia"] 
         self.pais = direccion["pais"] 
         
-    #Validate
-    #Output As Label
+    def __str__(self) -> str:
+        return f"{self.calle} {self.numero}, {self.ciudad}, {self.provincia}, {self.pais}"
