@@ -1,5 +1,4 @@
 from .direccion import Direccion
-from .cuenta import Cuenta
 
 class Cliente:
     nombre = ""
@@ -13,7 +12,6 @@ class Cliente:
         self.numero = datos_cliente["numero"]
         self.dni = datos_cliente["dni"]
         self.direccion = Direccion(datos_cliente["direccion"])
-        # self.cuenta = Cuenta()
 
     def puede_crear_chequera() -> bool:
         pass
