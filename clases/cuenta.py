@@ -1,11 +1,7 @@
 class Cuenta():
-    def limite_extraccion_diario() -> float:
-        pass
-    def limite_transferencia_recibida() -> float:
-        pass
-    def monto() -> float:
-        pass
-    def costo_transferencias() -> float:
-        pass
-    def saldo_descubierto_disponible() -> float:
-        pass
+    limite_extraccion_diario = 0
+    limite_transferencia_recibida = 0
+    monto = 0
+    costo_transferencias = 0
+    saldo_descubierto_disponible = 0
+        

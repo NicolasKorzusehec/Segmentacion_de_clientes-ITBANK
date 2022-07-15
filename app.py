@@ -8,7 +8,7 @@ def leerJSON():
         print("Error. El archivo especificado no existe.")
     else:
         datos_cliente = json.load(archivoJson)
-        crearCliente(datos_cliente)               #Envía el diccionario del cliente leído del json
+        return datos_cliente
         
 def crearCliente(datos_cliente):
     if datos_cliente["tipo"] == "CLASSIC":
@@ -18,9 +18,14 @@ def crearCliente(datos_cliente):
     elif datos_cliente["tipo"] == "BLACK":
         cliente = Black(datos_cliente)
 
-    print(cliente)
+    return cliente
 
-def generarHtml():
+def procesarTransacciones(transacciones):
+    for transaccion in transacciones:
+        if transaccion["estado"] == "RECHAZADA":
+            pass
+
+def generarHtml(cliente):
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
 
@@ -33,7 +38,9 @@ def generarHtml():
         print("No se ha podido generar la salida")
 
 if __name__ == "__main__":
-    leerJSON()      #Leer archivo json y crear objetos
-    #Procesar transacciones
-    generarHtml()   #Generar html y ejecutarlo
+    datos_cliente = {}
+    datos_cliente = leerJSON()
+    cliente = crearCliente(datos_cliente)
+    procesarTransacciones(datos_cliente["transacciones"])
+    generarHtml(cliente)
     
