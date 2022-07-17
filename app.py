@@ -61,43 +61,46 @@ def contenidoHtml(cliente, transacciones_procesadas):
         """
     return (f"""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
     <head>
+        <title>Listado de Transacciones</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
-        <title>Listado de Transacciones</title>
     </head>
-    <body>
-        <header>
-            <h1>Listado de Transacciones</h1>
+    <body class="container align-items-center justify-content-center">
+        <header class="col">
+            <h1 class="row mt-3">Listado de Transacciones</h1>
         </header>
-        <section>
-            <article>
-                <ul class="list-group">
-                    <li class="list-group-item">Nombre: {cliente.nombre}</li>
-                    <li class="list-group-item">Número de cliente: {cliente.numero}</li>
-                    <li class="list-group-item">Documento: {cliente.dni}</li>
-                    <li class="list-group-item">Dirección: {str(cliente.direccion)}</li>
-                </ul>
-            </article>
-            <article>
-                <table class="table-info">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Tipo</th>
-                            <th>Estado</th>
-                            <th>Monto</th>
-                            <th>Razón</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {listado}
-                    </tbody>
-                </table>
-            </article>
+        <section  id="datosCliente">
+            <div class="row">
+                <hr>
+                <p>Nombre: {cliente.nombre}</p>
+                <hr>
+                <p>Número de cliente: {cliente.numero}</p>
+                <hr>
+                <p>Documento: {cliente.dni}</p>
+                <hr>
+                <p>Dirección: {str(cliente.direccion)}</p>
+                <hr>
+            </div>
+        </section>
+        <section id="tabla">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
+                        <th>Razón</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    {listado}
+                </tbody>    
+            </table>
         </section>
     </body>
     </html>
