@@ -1,6 +1,6 @@
 from clases import Classic, Gold, Black
 from razones import RazonAltaChequera,RazonAltaTarjetaCredito,RazonCompraDolar,RazonRetiroEfectivo,RazonTransferenciaEnviada,RazonTransferenciaRecibida, razon
-import json, datetime, webbrowser
+import json, datetime, webbrowser, os
 
 # Busca y abre un archivo JSON en modo lectura, deserializa el objeto JSON, lo convierte en un objeto Python y finalmente lo retorna.
 # Si el archivo especificado no existe o no tiene formato JSON, devuelve un mensaje de error.
@@ -117,7 +117,7 @@ def generarHtml(cliente, transacciones_procesadas):
     contenido = contenidoHtml(cliente, transacciones_procesadas)
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
-    ruta_html = f"resultados\{documento_html}"
+    ruta_html = os.path.join("resultados", documento_html)
 
     with open(ruta_html, "w", encoding="utf-8", newline="") as salida:   
         salida.write(contenido)
@@ -133,4 +133,3 @@ if __name__ == "__main__":
         cliente = crearCliente(datos_cliente)       # cliente = Objeto del cliente
         transacciones_procesadas = procesarTransacciones(datos_cliente["transacciones"], cliente)   # Array con las transacciones procesadas
         generarHtml(cliente, transacciones_procesadas)
-    
