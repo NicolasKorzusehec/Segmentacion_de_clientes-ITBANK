@@ -111,7 +111,7 @@ def generarHtml(cliente, transacciones_procesadas):
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
 
-    with open(documento_html, "w", newline="") as salida:   
+    with open(documento_html, "w", encoding="utf-8", newline="") as salida:   
         salida.write(contenido)
 
     try:
