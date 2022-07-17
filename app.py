@@ -110,12 +110,13 @@ def generarHtml(cliente, transacciones_procesadas):
     contenido = contenidoHtml(cliente, transacciones_procesadas)
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
+    ruta_html = f"{documento_html}"
 
-    with open(documento_html, "w", encoding="utf-8", newline="") as salida:   
+    with open(ruta_html, "w", encoding="utf-8", newline="") as salida:   
         salida.write(contenido)
 
     try:
-        webbrowser.open(documento_html)
+        webbrowser.open(ruta_html)
     except FileNotFoundError:
         print("No se ha podido generar la salida")
 
