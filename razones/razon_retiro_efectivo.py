@@ -6,3 +6,5 @@ class RazonRetiroEfectivo(Razon):
             return "El monto a retirar excede el límite de extracción diario"
         elif abs(evento["saldoEnCuenta"] - evento["monto"]) > cliente.cuenta.saldo_descubierto_disponible:
             return "El retiro excede el saldo descubierto disponible"
+        else:
+            return ""

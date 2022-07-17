@@ -7,10 +7,10 @@ class Cliente:
     dni = ""
 
     def __init__(self, datos_cliente):
-        self.nombre = datos_cliente["nombre"]
-        self.apellido = datos_cliente["apellido"]
-        self.numero = datos_cliente["numero"]
-        self.dni = datos_cliente["dni"]
+        self.nombre = str(datos_cliente["nombre"])
+        self.apellido = str(datos_cliente["apellido"])
+        self.numero = str(datos_cliente["numero"])
+        self.dni = str(datos_cliente["dni"])
         self.direccion = Direccion(datos_cliente["direccion"])
 
     def puede_crear_chequera(self) -> bool:
