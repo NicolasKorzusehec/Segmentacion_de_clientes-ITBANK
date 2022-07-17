@@ -1,6 +1,6 @@
 from clases import Classic, Gold, Black
 from razones import RazonAltaChequera,RazonAltaTarjetaCredito,RazonCompraDolar,RazonRetiroEfectivo,RazonTransferenciaEnviada,RazonTransferenciaRecibida, razon
-import json, datetime, webbrowser
+import json, datetime, webbrowser, os
 
 def leerJSON():
     try:
@@ -110,7 +110,7 @@ def generarHtml(cliente, transacciones_procesadas):
     contenido = contenidoHtml(cliente, transacciones_procesadas)
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
-    ruta_html = f"{documento_html}"
+    ruta_html = os.path.join("Resultados", documento_html)
 
     with open(ruta_html, "w", encoding="utf-8", newline="") as salida:   
         salida.write(contenido)
