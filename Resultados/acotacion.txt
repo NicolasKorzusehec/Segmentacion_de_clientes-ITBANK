@@ -1,0 +1,1 @@
+Esta carpeta contendra todas las paginas resultantes del script python a fin de no llenar el repo de archivos temporales.

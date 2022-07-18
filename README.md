@@ -81,7 +81,7 @@ El reporte emitido debe incluir:
   - Dirección 
   - Fecha de cada transaccion
   - Tipo de operacion y su estado
-  - Monto y razon poe la cual se rechazo, `vacío en caso de ser aceptada`
+  - Monto y razon por la cual se rechazo, `vacío en caso de ser aceptada`
 
 Se pide que el reporte sea una `página en HTML` válida de forma que el browser estándar del banco lo pueda interpretar y visualizar.
 La salida del sistema TPS es un `archivo JSON` con las transacciones que debemos procesar.
