@@ -23,8 +23,10 @@ def crearCliente(datos_cliente):
         cliente = Black(datos_cliente)
     elif datos_cliente["tipo"] == "GOLD":
         cliente = Gold(datos_cliente)
-    else:
+    elif datos_cliente["tipo"] == "CLASSIC":
         cliente = Classic(datos_cliente)
+    else:
+        print("Todavia no fue definido ese tipo de cliente.")
     return cliente
 
 # Itera sobre un array de transacciones, controlando las que son rechazadas para asignarles la razón correspondiente según el tipo de transacción.
@@ -44,8 +46,10 @@ def procesarTransacciones(transacciones, cliente):
                 razon = RazonCompraDolar().resolver(cliente, transaccion)
             elif transaccion["tipo"] == "TRANSFERENCIA_ENVIADA":
                 razon = RazonTransferenciaEnviada().resolver(cliente, transaccion)
-            else:
+            elif transaccion["tipo"] == "TRANSFERENCIA_RECIBIDA":
                 razon = RazonTransferenciaRecibida().resolver(cliente, transaccion)
+            else:
+                print("Todavia no fue definida esta transaccion.")
         else:
             razon = ""
         transacciones_procesadas.append({"fecha": transaccion["fecha"], "tipo": transaccion["tipo"], "estado":transaccion["estado"], "monto": transaccion["monto"], "razon": razon})
