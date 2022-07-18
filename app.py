@@ -8,6 +8,7 @@ def leerJSON(filename):
     try:
         archivoJson = open(filename, "r", newline="")
         datos_cliente = json.load(archivoJson)
+        archivoJson.close()
     except FileNotFoundError:                              
         print("Error: El archivo especificado no existe.")
         return
@@ -55,6 +56,44 @@ def procesarTransacciones(transacciones, cliente):
         transacciones_procesadas.append({"fecha": transaccion["fecha"], "tipo": transaccion["tipo"], "estado":transaccion["estado"], "monto": transaccion["monto"], "razon": razon})
     return transacciones_procesadas
 
+def aclaracionHabilitado(tipo):
+    if tipo == "CLASSIC":
+        return """
+<ul>
+    <li>Tiene solamente una tarjeta de débito que se crea junto con el cliente.</li>
+    <li>Solo tiene una caja ahorro en pesos creada cuando se dio de alta el cliente.</li>
+    <li>Como no tiene cuenta en dólares, no puede comprar y vender dólares.</li>
+    <li>Solo se le permite retirar hasta un máximo de $10.000 diarios por cajero.</li>
+    <li>No tienen acceso a tarjetas de crédito, ni chequeras.</li>
+    <li>La comisión por transferencias hechas es de 1%.</li>
+    <li>puede recibir transferencias mayores a $150.000 sin previo aviso.</li>
+</ul>"""
+    elif tipo == "GOLD":
+        return """
+<ul>
+    <li>Tiene una tarjeta de débito que se crea con el cliente.</li>
+    <li>Tiene una cuenta corriente con un descubierto de $10.000. Hay que tener presente que como tiene cuenta corriente el saldo en la cuenta podría ser negativo y hasta -$10.000 si tiene cupo diario para la operación que se quiera realizar.</li>
+    <li>Tiene una caja de ahorro en dólares, por lo que puede comprar dólares.</li>
+    <li>Puede tener solo una tarjeta de crédito.</li>
+    <li>Las extracciones de efectivo tienen un máximo de $20.000 por día.</li>
+    <li>Pueden tener una chequera.</li>
+    <li>La comisión por transferencias hechas es de 0,5%.</li>
+    <li>No puede recibir transferencias mayores a $500.000 sin previo aviso.</li>
+</ul>"""
+    elif tipo == "BLACK":
+        return """
+<ul>
+    <li>Los clientes Black tienen una caja de ahorro en pesos, cuenta corriente en pesos, y una caja de ahorro en dólares.</li>
+    <li>Pueden tener un descubierto en su cuenta corriente de hasta $10.000.</li>
+    <li>Pueden tener hasta 5 tarjetas de crédito.</li>
+    <li>Pueden extraer hasta $100.000 por día.</li>
+    <li>Pueden tener hasta dos chequeras</li>
+    <li>No se aplican comisiones a las transferencias.</li>
+    <li>Pueden recibir transferencias por cualquier monto sin previa autorización.</li>
+</ul>"""
+    else:
+        return "Tipo no definido"
+
 # Crea el contenido de un documento HTML que contiene los datos del cliente y una tabla con los datos de las transacciones procesadas.
 def contenidoHtml(cliente, transacciones_procesadas):
     listado = ""
@@ -68,6 +107,7 @@ def contenidoHtml(cliente, transacciones_procesadas):
             <td>{transaccion["razon"]}</td>
         </tr>
         """
+    aclaracion = aclaracionHabilitado(cliente.tipoDeCliente)
     contenido = f"""
     <!DOCTYPE html>
     <html lang="es">
@@ -85,13 +125,18 @@ def contenidoHtml(cliente, transacciones_procesadas):
         <section  id="datosCliente">
             <div class="row">
                 <hr>
-                <p>Nombre: {cliente.nombre}</p>
+                <p>Nombre: {cliente.nombre} {cliente.apellido}</p>
                 <hr>
                 <p>Número de cliente: {cliente.numero}</p>
                 <hr>
                 <p>Documento: {cliente.dni}</p>
                 <hr>
                 <p>Dirección: {str(cliente.direccion)}</p>
+                <hr>
+                <details class="mb-3">
+                    <summary>Tipo de cliente: {cliente.tipoDeCliente}</summary>
+                    <p>{aclaracion}</p>
+                </details">
                 <hr>
             </div>
         </section>
@@ -131,7 +176,7 @@ def generarHtml(cliente, transacciones_procesadas):
         print("No se ha podido generar la salida")
 
 if __name__ == "__main__":
-    archivo = "eventos\eventos_gold.json"
+    archivo = "eventos\eventos_classic.json"
     datos_cliente = leerJSON(archivo)
     if not datos_cliente == None:                   # Datos cliente = Diccionario leído del JSON
         cliente = crearCliente(datos_cliente)       # cliente = Objeto del cliente
