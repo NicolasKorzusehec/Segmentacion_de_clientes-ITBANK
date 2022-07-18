@@ -131,7 +131,7 @@ def generarHtml(cliente, transacciones_procesadas):
         print("No se ha podido generar la salida")
 
 if __name__ == "__main__":
-    archivo = "eventos\eventos_gold.json"
+    archivo = "eventos\eventos_classic.json"
     datos_cliente = leerJSON(archivo)
     if not datos_cliente == None:                   # Datos cliente = Diccionario leído del JSON
         cliente = crearCliente(datos_cliente)       # cliente = Objeto del cliente
