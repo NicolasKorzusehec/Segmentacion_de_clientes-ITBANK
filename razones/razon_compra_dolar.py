@@ -6,3 +6,5 @@ class RazonCompraDolar(Razon):
             return "La cuenta no permite realizar compra de dólares"
         elif evento["monto"] > evento["saldoEnCuenta"]:
             return "Se ha excedido el saldo de la cuenta"
+        else:
+            return ""

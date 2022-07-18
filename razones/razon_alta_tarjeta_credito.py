@@ -6,3 +6,5 @@ class RazonAltaTarjetaCredito(Razon):
             return "La cuenta no permite solicitar tarjetas de crédito"
         elif evento["totalTarjetasDeCreditoActualmente"] >=  cliente.cuenta.limite_tarjetas_credito:
             return "Se ha excedido el límite de tarjetas de crédito"
+        else:
+            return ""

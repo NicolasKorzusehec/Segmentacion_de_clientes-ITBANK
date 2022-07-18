@@ -1,30 +1,39 @@
 from clases import Classic, Gold, Black
 from razones import RazonAltaChequera,RazonAltaTarjetaCredito,RazonCompraDolar,RazonRetiroEfectivo,RazonTransferenciaEnviada,RazonTransferenciaRecibida, razon
-import json, datetime, webbrowser
+import json, datetime, webbrowser, os
 
-def leerJSON():
+# Busca y abre un archivo JSON en modo lectura, deserializa el objeto JSON, lo convierte en un objeto Python y finalmente lo retorna.
+# Si el archivo especificado no existe o no tiene formato JSON, devuelve un mensaje de error.
+def leerJSON(filename):
     try:
-        archivoJson = open("eventos\eventos_gold.json", "r", newline="")
-    except FileNotFoundError:                              
-        print("Error. El archivo especificado no existe.")
-    else:
+        archivoJson = open(filename, "r", newline="")
         datos_cliente = json.load(archivoJson)
+    except FileNotFoundError:                              
+        print("Error: El archivo especificado no existe.")
+        return
+    except json.JSONDecodeError:
+        print("Error: El archivo especificado no tiene formato JSON.")
+        return
+    else:
         return datos_cliente
-        
+
+# Crea y retorna una instancia de un objeto subclase de Cliente según el tipo especificado en el diccionario 'datos_cliente'.
 def crearCliente(datos_cliente):
-    if datos_cliente["tipo"] == "CLASSIC":
-        cliente = Classic(datos_cliente)
+    if datos_cliente["tipo"] == "BLACK":
+        cliente = Black(datos_cliente)
     elif datos_cliente["tipo"] == "GOLD":
         cliente = Gold(datos_cliente)
-    elif datos_cliente["tipo"] == "BLACK":
-        cliente = Black(datos_cliente)
-
+    elif datos_cliente["tipo"] == "CLASSIC":
+        cliente = Classic(datos_cliente)
+    else:
+        print("Todavia no fue definido ese tipo de cliente.")
     return cliente
 
+# Itera sobre un array de transacciones, controlando las que son rechazadas para asignarles la razón correspondiente según el tipo de transacción.
+# Retorna un array de diccionarios de las transacciones procesadas.
 def procesarTransacciones(transacciones, cliente):
-    transacciones_procesadas = []   #Array de diccionario de cada transacción con los datos a usar
+    transacciones_procesadas = []   # Array de diccionarios de cada transacción.
     razon = ""
-
     for transaccion in transacciones:
         if transaccion["estado"] == "RECHAZADA":
             if transaccion["tipo"] == "RETIRO_EFECTIVO_CAJERO_AUTOMATICO":
@@ -39,15 +48,15 @@ def procesarTransacciones(transacciones, cliente):
                 razon = RazonTransferenciaEnviada().resolver(cliente, transaccion)
             elif transaccion["tipo"] == "TRANSFERENCIA_RECIBIDA":
                 razon = RazonTransferenciaRecibida().resolver(cliente, transaccion)
+            else:
+                print("Todavia no fue definida esta transaccion.")
         else:
             razon = ""
-
         transacciones_procesadas.append({"fecha": transaccion["fecha"], "tipo": transaccion["tipo"], "estado":transaccion["estado"], "monto": transaccion["monto"], "razon": razon})
-
     return transacciones_procesadas
 
+# Crea el contenido de un documento HTML que contiene los datos del cliente y una tabla con los datos de las transacciones procesadas.
 def contenidoHtml(cliente, transacciones_procesadas):
-    
     listado = ""
     for transaccion in transacciones_procesadas:
         listado += f"""
@@ -59,7 +68,7 @@ def contenidoHtml(cliente, transacciones_procesadas):
             <td>{transaccion["razon"]}</td>
         </tr>
         """
-    return (f"""
+    contenido = f"""
     <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -104,25 +113,27 @@ def contenidoHtml(cliente, transacciones_procesadas):
         </section>
     </body>
     </html>
-    """)
+    """
+    return contenido
 
+# Genera un documento HTML, inserta los datos del cliente y las transacciones, y lo intenta abrir en el navegador.
 def generarHtml(cliente, transacciones_procesadas):
     contenido = contenidoHtml(cliente, transacciones_procesadas)
     timestamp = int(datetime.datetime.now().timestamp())
     documento_html = f"index-{timestamp}.html"
-    ruta_html = f"{documento_html}"
+    ruta_html = os.path.join("resultados", documento_html)
 
     with open(ruta_html, "w", encoding="utf-8", newline="") as salida:   
         salida.write(contenido)
-
     try:
         webbrowser.open(ruta_html)
     except FileNotFoundError:
         print("No se ha podido generar la salida")
 
 if __name__ == "__main__":
-    datos_cliente = leerJSON()                  #Datos cliente = Diccionario leído del JSON
-    cliente = crearCliente(datos_cliente)       #cliente = Objeto del cliente
-    transacciones_procesadas = procesarTransacciones(datos_cliente["transacciones"], cliente)   #Array con las transacciones procesadas
-    generarHtml(cliente, transacciones_procesadas)
-    
+    archivo = "eventos\eventos_gold.json"
+    datos_cliente = leerJSON(archivo)
+    if not datos_cliente == None:                   # Datos cliente = Diccionario leído del JSON
+        cliente = crearCliente(datos_cliente)       # cliente = Objeto del cliente
+        transacciones_procesadas = procesarTransacciones(datos_cliente["transacciones"], cliente)   # Array con las transacciones procesadas
+        generarHtml(cliente, transacciones_procesadas)
