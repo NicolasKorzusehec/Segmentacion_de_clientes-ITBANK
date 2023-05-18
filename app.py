@@ -2,6 +2,9 @@ from clases import Classic, Gold, Black
 from razones import RazonAltaChequera,RazonAltaTarjetaCredito,RazonCompraDolar,RazonRetiroEfectivo,RazonTransferenciaEnviada,RazonTransferenciaRecibida, razon
 import json, datetime, webbrowser, os
 
+# Modificación: Es interesante plantear ciertas constantes a inicio del archivo para evitar errores de tipeo, ejemplo los tipos de transferencia. Separar alguna de las funciones de aca como otros objetos, como el de la web que se genera.
+
+
 # Busca y abre un archivo JSON en modo lectura, deserializa el objeto JSON, lo convierte en un objeto Python y finalmente lo retorna.
 # Si el archivo especificado no existe o no tiene formato JSON, devuelve un mensaje de error.
 def leerJSON(filename):
@@ -176,7 +179,7 @@ def generarHtml(cliente, transacciones_procesadas):
         print("No se ha podido generar la salida")
 
 if __name__ == "__main__":
-    archivo = "eventos\eventos_classic.json"
+    archivo = "eventos\eventos_classic.json"  # definir valor como constantes o que se muestre los archivos de la carpeta eventos.
     datos_cliente = leerJSON(archivo)
     if not datos_cliente == None:                   # Datos cliente = Diccionario leído del JSON
         cliente = crearCliente(datos_cliente)       # cliente = Objeto del cliente
